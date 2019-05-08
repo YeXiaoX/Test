@@ -18,10 +18,10 @@ public class ThreadTest extends Thread {
     @Override
     public void run() {
         while(true) {
-            synchronized (o) {
+            synchronized (t) {
                     while(t.getA() != a) {
                         try {
-                            o.wait();
+                            t.wait();
                         } catch (InterruptedException e) {
                             e.printStackTrace();
                         }
@@ -37,7 +37,7 @@ public class ThreadTest extends Thread {
                     } else {
                         t.setA(t.getA() + 1);
                     }
-                    o.notifyAll();
+                    t.notifyAll();
                 }
             }
         }
